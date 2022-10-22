@@ -6,12 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    //TODO CODE!
+
     protected $fillable = ['title', 'body'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    //TODO CODE!
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = str_slug($value);
     }
     //END CODE!
 }
